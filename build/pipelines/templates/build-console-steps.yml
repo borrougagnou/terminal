@@ -25,6 +25,17 @@ steps:
     restoreSolution: OpenConsole.sln
     restoreDirectory: '$(Build.SourcesDirectory)\packages'
 
+- task: 333b11bd-d341-40d9-afcf-b32d5ce6f23b@2
+  displayName: 'NuGet restore Test Adapters'
+  inputs:
+    command: custom
+    arguments: >-
+      install
+      Taef.TestAdapter
+      -Source https://microsoft.pkgs.visualstudio.com/DefaultCollection/_packaging/Taef/nuget/v3/index.json
+      -OutputDirectory packages
+      -Version 10.3.161206002-develop
+
 - task: VSBuild@1
   displayName: 'Build solution **\OpenConsole.sln'
   inputs:
